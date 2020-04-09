@@ -1,6 +1,8 @@
 [submodule "Jodin-Java"]
 	path = Jodin-Java
 	url = https://github.com/JoshuaRadin37/Jodin-Java.git
+	branch = origin/master
 [submodule "Jodinc"]
 	path = Jodinc
 	url = https://github.com/JoshuaRadin37/Jodinc.git
+	branch = origin/master
