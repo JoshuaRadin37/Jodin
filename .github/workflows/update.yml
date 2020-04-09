@@ -2,8 +2,6 @@
 
 name: Update
 
-
-
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
@@ -23,17 +21,16 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - uses: srt32/git-actions@v0.0.3
-
-    # Runs a single command using the runners shell
     - name: Fetch
       run: git fetch
-    
-    - name: Update
+    - name: Update submodules
       run: git submodule update --remote
-      
     - name: Commit
-      run: git commit -m "Updated Submodules"
-    
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Updated Submodules"
     - name: Push
-      run: git push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
